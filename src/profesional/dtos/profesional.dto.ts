@@ -1,0 +1,19 @@
+import { Direccion } from './direccion.dto';
+
+enum TipoProfesional {
+    MEDICO = 1,
+    ENFERMERO,
+    ADMINISTRATIVO
+}
+
+export class CreateProfesionalDto {
+    readonly numColegiado: string;
+    readonly nombre: string;
+    readonly primerApellido: string;
+    readonly segundoApellido: string;
+    readonly genero: string;
+    readonly fechaNacimiento: Date;
+    readonly createdAt: Date;
+    readonly direccion: Direccion;
+    readonly tipoProfesional: TipoProfesional;
+}
