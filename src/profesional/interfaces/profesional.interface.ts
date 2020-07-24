@@ -9,6 +9,7 @@ enum TipoProfesional {
 
 export interface Profesional extends Document {
     readonly numColegiado: string;
+    readonly NIF: string;
     readonly nombre: string;
     readonly primerApellido: string;
     readonly segundoApellido: string;

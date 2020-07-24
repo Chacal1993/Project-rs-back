@@ -1,6 +1,7 @@
-import { Controller, Get, Post, Body, Res, HttpStatus, Delete, Query, Param } from '@nestjs/common';
+import { Controller, Get, Post, Body, Res, HttpStatus, Delete, Query, Param, Put } from '@nestjs/common';
 import { CreatePacienteDto } from '../dtos/paciente.dto';
 import { PacienteService } from '../paciente.service';
+import { Paciente } from '../interfaces/paciente.interface';
 
 @Controller('paciente')
 export class PacienteController {
@@ -21,9 +22,17 @@ export class PacienteController {
         return idPaciente;
     }
 
+    @Put('/update')
+    async updatePaciente(@Res() res, @Body() createPacienteDto: CreatePacienteDto, @Query('id') idPac) {
+        const updPac = await this.pecientService.updatePaciente(idPac, createPacienteDto);
+        return res.status(HttpStatus.OK).json({
+            updPac
+        });
+    }
+
     @Post('/create')
-    async createPost(@Res() res, @Body() createPacinteDto: CreatePacienteDto) {
-        const paciente = await this.pecientService.createPacient(createPacinteDto);
+    async createPaciente(@Res() res, @Body() createPacinteDto: CreatePacienteDto) {
+        const paciente = await this.pecientService.createPaciente(createPacinteDto);
         return res.status(HttpStatus.OK).json({
             paciente: paciente
         })

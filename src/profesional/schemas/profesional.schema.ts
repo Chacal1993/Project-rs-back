@@ -4,6 +4,7 @@ export const ProfesionalSchema = new Schema({
     numColegiado: { type: String, required: true },
     nombre: { type: String, required: true },
     primerApellido: { type: String, required: true },
+    NIF: String,
     segundoApellido: String,
     genero: String,
     fechaNacimiento: Date,

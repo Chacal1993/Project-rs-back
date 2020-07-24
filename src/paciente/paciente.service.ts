@@ -9,7 +9,7 @@ export class PacienteService {
 
     constructor(@InjectModel('Paciente') private readonly pacientModel: Model<Paciente>) { }
 
-    async createPacient(createPacienteDto: CreatePacienteDto): Promise<Paciente> {
+    async createPaciente(createPacienteDto: CreatePacienteDto): Promise<Paciente> {
         const pacient = new this.pacientModel(createPacienteDto);
         return await pacient.save();
     }
@@ -22,6 +22,11 @@ export class PacienteService {
     async getPacientById(idProf: string): Promise<Paciente> {
         const idPaciente = await this.pacientModel.findById(idProf);
         return idPaciente;
+    }
+
+    async updatePaciente(idPac: string, createPacienteDto: CreatePacienteDto): Promise<Paciente> {
+        const updPac = await this.pacientModel.findOneAndUpdate({ _id: idPac }, createPacienteDto, { useFindAndModify: false, new: true })
+        return updPac;
     }
 
     async deletePaciente(id: string): Promise<Paciente> {

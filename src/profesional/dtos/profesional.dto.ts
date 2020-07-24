@@ -8,6 +8,7 @@ enum TipoProfesional {
 
 export class CreateProfesionalDto {
     readonly numColegiado: string;
+    readonly NIF: string;
     readonly nombre: string;
     readonly primerApellido: string;
     readonly segundoApellido: string;

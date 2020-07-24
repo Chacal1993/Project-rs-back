@@ -1,4 +1,4 @@
-import { Controller, Get, Res, HttpStatus, Post, Body, Query, Delete, Param } from '@nestjs/common';
+import { Controller, Get, Res, HttpStatus, Post, Body, Query, Delete, Param, Put } from '@nestjs/common';
 import { ProfesionalService } from '../profesional.service';
 import { CreateProfesionalDto } from '../dtos/profesional.dto';
 
@@ -22,11 +22,17 @@ export class ProfesionalController {
     }
 
     @Post('/create')
-    async createPost(@Res() res, @Body() createProfesionalDto: CreateProfesionalDto) {
+    async createProfesional(@Res() res, @Body() createProfesionalDto: CreateProfesionalDto) {
         const prof = await this.profesionalService.createProfesional(createProfesionalDto);
         return res.status(HttpStatus.OK).json({
             prof: prof
         })
+    }
+
+    @Put('/update')
+    async updateProfsional(createProfesionalDto: CreateProfesionalDto, @Query('id') idProf) {
+        const updProf = this.profesionalService.createProfesional(createProfesionalDto);
+        return updProf;
     }
 
     @Delete('/delete')

@@ -4,6 +4,7 @@ import { Direccion } from '../dtos/direccion.dto';
 
 export interface Paciente extends Document {
     readonly NHC: string;
+    readonly NIF: string;
     readonly nombre: string;
     readonly primerApellido: string;
     readonly segundoApellido: string;

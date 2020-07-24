@@ -25,6 +25,11 @@ export class ProfesionalService {
         return idprofesional;
     }
 
+    async updateProfesional(idProf: string, createProfesionalDto: CreateProfesionalDto): Promise<Profesional> {
+        const updProf = await this.profesionalModel.findByIdAndUpdate(idProf, createProfesionalDto, { new: true })
+        return updProf;
+    }
+
     async deleteProfesional(id: string): Promise<Profesional> {
         const dltProf = await this.profesionalModel.findByIdAndDelete(id);
         return dltProf;

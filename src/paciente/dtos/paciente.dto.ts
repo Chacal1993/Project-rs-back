@@ -3,6 +3,7 @@ import { Aseguradora } from './aseguradora.dto';
 
 export class CreatePacienteDto {
     readonly NHC: string;
+    readonly NIF: string;
     readonly nombre: string;
     readonly primerApellido: string;
     readonly segundoApellido: string;
