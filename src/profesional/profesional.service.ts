@@ -26,7 +26,7 @@ export class ProfesionalService {
     }
 
     async updateProfesional(idProf: string, createProfesionalDto: CreateProfesionalDto): Promise<Profesional> {
-        const updProf = await this.profesionalModel.findByIdAndUpdate(idProf, createProfesionalDto, { new: true })
+        const updProf = await this.profesionalModel.findOneAndUpdate({ _id: idProf }, createProfesionalDto, { useFindAndModify: false, new: true })
         return updProf;
     }
 

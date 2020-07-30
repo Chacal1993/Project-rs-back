@@ -30,9 +30,11 @@ export class ProfesionalController {
     }
 
     @Put('/update')
-    async updateProfsional(createProfesionalDto: CreateProfesionalDto, @Query('id') idProf) {
-        const updProf = this.profesionalService.createProfesional(createProfesionalDto);
-        return updProf;
+    async updateProfsional(@Res() res, @Body() createProfesionalDto: CreateProfesionalDto, @Query('id') idProf) {
+        const updProf = await this.profesionalService.updateProfesional(idProf, createProfesionalDto);
+        return res.status(HttpStatus.OK).json({
+            updProf
+        });
     }
 
     @Delete('/delete')

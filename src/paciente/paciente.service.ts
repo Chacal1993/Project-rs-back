@@ -35,4 +35,21 @@ export class PacienteService {
 
     }
 
+    /* async createTask(createTaskDto:CreateTaskDto){
+        
+        const createdTask =  new this.taskModel(createTaskDto);
+        const session = await createdTask.db.startSession();
+        
+        try{
+            session.startTransaction();
+            let result = await this.taskModel.create([{"title":createTaskDto.title,"description":createTaskDto.description,"status":""}],{session: session})    
+            await session.commitTransaction();
+        }catch (error){
+            Logger.error(error);
+            await session.abortTransaction();
+            
+        }finally{
+            session.endSession();
+        }
+    } */
 }
